@@ -7,6 +7,9 @@ class Category(models.Model):
     name = models.CharField(max_length=64, verbose_name='название', blank=True, default="")
 
 
+
+
+
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -14,6 +17,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='категория', null=True, blank=True)
+    Comments = models.ForeignKey()
 
     def publish(self):
         self.published_date = timezone.now()
@@ -21,3 +25,13 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comments(models.Model):
+    class Meta:
+        db_table = 'comments'
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
+    text = models.TextField,
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE),
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name='Пост', null=True, blank=True)
