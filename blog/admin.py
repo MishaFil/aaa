@@ -6,6 +6,6 @@ from .models import Post,Category
 class PostAdmin(admin.ModelAdmin):
     """."""
     list_display = ("title", "author","category")
-    fields = ("title", "author", "text","category")
+    fields = ("title", "author", "text","category","published_date")
 
 
