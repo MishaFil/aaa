@@ -1,16 +1,6 @@
 """blog.admin."""
-from adminfilters.autocomplete import AutoCompleteFilter
-from adminfilters.combo import ChoicesFieldComboFilter
-from adminfilters.dj import DjangoLookupFilter
-from adminfilters.json import JsonFieldFilter
-from adminfilters.numbers import NumberFilter
-from adminfilters.querystring import QueryStringFilter
-from adminfilters.value import ValueFilter
-from django.contrib import admin
-from django.contrib.admin import ModelAdmin
-from django.forms import JSONField
 
-from . import models
+from django.contrib import admin
 from .models import Post,  Comments
 class CommentInline(admin.TabularInline):
     model = Comments
@@ -24,8 +14,4 @@ class PostAdmin(admin.ModelAdmin):
     inlines = [CommentInline]
 
 
-
-
-class FilterDepotManager:
-    pass
 
