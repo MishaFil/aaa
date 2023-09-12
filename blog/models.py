@@ -30,4 +30,4 @@ class Comments(models.Model):
 
     text = models.TextField(),
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE),
-    post = models.ForeignKey(on_delete=models.CASCADE, verbose_name='Пост')
+    post = models.ForeignKey(Post,on_delete=models.CASCADE, verbose_name='Пост')
