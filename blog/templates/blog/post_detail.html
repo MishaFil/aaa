@@ -12,15 +12,12 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
-        {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
-
+    <h3><b><p>Комментарии:</p></b></h3>
+         <div class="comment">
+             {% for comment in post.comments.all %}
+                 <b>{{ comment.author }}</b>
+                 <p>{{ comment.text }}</p>
+             {% endfor %}
+         </div>
     </div>
 {% endblock %}

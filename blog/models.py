@@ -28,6 +28,6 @@ class Comments(models.Model):
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
 
-    text = models.TextField(),
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE),
-    post = models.ForeignKey(Post,on_delete=models.CASCADE, verbose_name='Пост')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    text = models.TextField()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name='Пост',related_name='comments')

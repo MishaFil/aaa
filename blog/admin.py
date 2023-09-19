@@ -2,9 +2,12 @@
 
 from django.contrib import admin
 from .models import Post,  Comments
+
+
 class CommentInline(admin.TabularInline):
     model = Comments
     extra = 0
+
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

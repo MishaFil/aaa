@@ -51,3 +51,8 @@ h1, h2, h3, h4 {
 .post h1 a, .post h1 a:visited {
     color: #000000;
 }
+
+.comment{
+    border-style: initial ;
+    background-color: pink;
+}
