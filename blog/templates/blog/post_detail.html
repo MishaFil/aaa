@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    <h3><b><p>Комментарии:</p></b></h3>
+         <div class="comment">
+             {% for comment in post.comments.all %}
+                 <b>{{ comment.author }}</b>
+                 <p>{{ comment.text }}</p>
+             {% endfor %}
+         </div>
+    </div>
+{% endblock %}
